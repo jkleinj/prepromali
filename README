@@ -1,0 +1,85 @@
+
+prepromali : preprocess multiple alignment (for PSICOV)
+-------------------------------------------------------
+The program reads in FASTA multiple alignment (--maliIn)
+and query sequence header (--query_i),
+removes the alignment columns corresponding to gapped positions 
+in the query sequence and prints out the ungapped (referring to
+the query sequence) multiple alignment with the query sequence
+at the top. The resulting multiple alignment is printed in two formats,
+FASTA and headless (sequence headers removed), the latter as input
+for PSICOV.
+
+The '--maliJoin <alignment input>' option is intended to append a
+second multiple alignment, where the sequences are automatically
+paired with those of the '--maliIn  <alignment input>' alignment.
+A separate query '--query_j' should be provided for this alignment.
+Both query sequences will be be joined at the top of the alignment.
+Pairing of the remaining sequences requires their headers to have 
+the same sequence name excluding the residue numbering, for example
+'>D5H7Z3_SALRM/2-344' would be paired with 
+'>D5H7Z3_SALRM/359-474'.
+It is assumed that the separator character to the residue numbering is '/'.
+Although technically not required for this program, it makes sense 
+to join the C-terminal mali (--maliJoin) to the N-terminal mali (--maliIn)
+to avoid complications when mapping the correlations onto a structure. 
+
+If you provide the 'firstSeqResidue' and 'firstStrResidue' numbers,
+an additional file will be created for each alignment that lists
+the sequence and its various numberings.
+
+
+Install / Uninstall
+-------------------
+Please read the general 'INSTALL' instructions.
+
+The configuration option '--enable-debug' creates a debuggable binary,
+the option '--enable-profiling' enables profiling with 'gprof'.    
+
+
+Usage
+-----
+prepromali [--maliIn ...] [--query_i] [OPTIONS ...]
+prepromali [--maliIn ...] [--query_i] [--maliJoin] [--query_j] [OPTIONS ...]
+	   --maliIn <alignment input>			(mode: mandatory, type: char  , default: void)
+	   --query_i <query i name input>			(mode: optional , type: char  , default: void)
+	   --noquery_i					(mode: optional , type: no_arg, default: off)
+	   --maliJoin <alignment input>			(mode: optional , type: char  , default: void)
+	   --query_j <query j name input>			(mode: optional , type: char  , default: void)
+	   --noquery_j					(mode: optional , type: no_arg, default: off)
+	   --maliOut <processed FASTA output>		(mode: optional , type: char  , default: void)
+	   --headlessiOut <processed headless i output>	(mode: optional , type: no_arg, default: off)
+	   --gaplessiOut <processed gapless i output>	(mode: optional , type: no_arg, default: off)
+	   --maljOut <joined alignment output>	(mode: optional , type: char  , default: void)
+	   --headlessjOut <processed headless j output>	(mode: optional , type: no_arg, default: off)
+	   --maliJoinOut <joined alignment output>	(mode: optional , type: char  , default: void)
+	   --headlessJoinOut <joined headless output>	(mode: optional , type: char  , default: void)
+	   --silent					(mode: optional , type: no_arg, default: off)
+	   --cite					(mode: optional , type: no_arg, default: off)
+	   --version					(mode: optional , type: no_arg, default: off)
+	   --help
+
+
+-------------------------------------------------------------------------------
+Copyright (C) 2013 Jens Kleinjung
+
+Availability
+------------
+The program is made available under the GNU Public License for academic
+scientific purposes, under the condition that proper acknowledgement
+is made to the authors of the program in publications resulting from the use
+of the program.
+
+License
+-------
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+

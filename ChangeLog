@@ -1,0 +1,29 @@
+- 1.2.1
+Tue Dec 10 15:20:55 GMT 2013
+	Bug fix (20131209): Corrected loop termination criterion.
+
+- 1.2.0
+	Added option to provide query for joined alignment file.
+	Added output file to keep track of residue numbering.
+
+- 1.1.3
+Tue Oct 22 18:06:42 BST 2013
+	Added gapless output
+
+- 1.1.2
+Fri Jun  7 15:32:17 BST 2013
+	Bug fix: alignment to join needs modified header check.
+
+- 1.1.1
+Fri Jun  7 14:03:51 BST 2013
+	Added output of alignment to join.
+
+- 1.1.0
+Thu Jun  6 13:08:18 BST 2013
+	Added option to join second alignment file.
+	Corrected overwriting of header of query-swapped sequence.
+
+- 1.0.0
+Thu May 23 11:19:30 BST 2013
+	Released
+
